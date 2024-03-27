@@ -1,6 +1,3 @@
-# Welcome to GitHub Desktop!
-
-This is your README. READMEs are where you can communicate what your project is and how to use it.
-
-Write your name on line 6, save it, and then head back to GitHub Desktop.
-luca
+The game: tic tac toe 
+Members: Luca flores and Emiliano nuñez 
+this is a game that consist of a 2 player game in which one of the players wins by making a horizontal, vertical or diagonal line in a 9 squares figure 
