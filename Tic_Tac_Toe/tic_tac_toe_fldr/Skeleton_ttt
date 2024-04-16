@@ -2,6 +2,13 @@
 squares_board = {1: ' ', 2: ' ', 3: ' ',
                 4: ' ', 5: ' ', 6: ' ',
                 7: ' ', 8: ' ', 9: ' '}
+check = 'ok'
+
+for instructions in check:
+    if instructions == "ok":
+        continue  # This skips the current iteration and moves to the next one
+    print (input('Hi welcome to tic tac toe, in order to win the game complete 3 spaces in diagonal or a straight line (write "ok" to continue):'))
+
 
 def gameboard (squares_board):
     print(squares_board[1] + '|' + squares_board[2] + '|' + squares_board[3])
