@@ -45,14 +45,14 @@ danceo = ["┏( ͡❛ ͜ʖ ͡❛)┛ O wins! ┏( ͡❛ ͜ʖ ͡❛)┛", "�
 repeat_times = 5
 
 
-def insertLetter(letter, position):
+def insertposition(letter, position):
     if spaceIsFree(position):
         board[position] = letter
         printBoard(board)
         if (checkDraw()):
             print("¯\_( ͡❛ ● ͡❛)_/¯  Draw! ¯\_( ͡❛ ● ͡❛)_/¯")
             exit()
-        if checkForWin():
+        if checkWin():
             if letter == 'X':
                 for d in dancex:
                     for _ in range(repeat_times):
@@ -71,11 +71,11 @@ def insertLetter(letter, position):
     else:
         print("already something here ┏( ͡❛ ︵ ͡❛)┛")
         position = int(input("Choose somewhere else ┏( ͡❛ ● ͡❛)┛ "))
-        insertLetter(letter, position)
+        insertposition(letter, position)
         return
 
 
-def checkForWin():
+def checkWin():
     if (board[1] == board[2] and board[1] == board[3] and board[1] != ' '):
         return True
     elif (board[4] == board[5] and board[4] == board[6] and board[4] != ' '):
@@ -105,13 +105,14 @@ def checkDraw():
 
 def playerMove():
     position = int(input("Choose the position for 'O':  "))
-    insertLetter(player, position)
+    insertposition(player, position)
     return
 
 
 def compMove():
     position = int(input("Choose the position for 'X':  "))
-    insertLetter(bot, position)
+    insertposition
+    (bot, position)
     return
 
 printBoard(board)
@@ -119,8 +120,9 @@ printBoard(board)
 
 
 
-while not checkForWin():
+while not checkWin():
     compMove()
     playerMove()
+
 
 
