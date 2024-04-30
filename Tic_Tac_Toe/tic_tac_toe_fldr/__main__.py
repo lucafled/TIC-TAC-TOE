@@ -1,65 +1,126 @@
-# print the game board 
-squares_board = {1: ' ', 2: ' ', 3: ' ',
-                4: ' ', 5: ' ', 6: ' ',
-                7: ' ', 8: ' ', 9: ' '}
+checkhi = 'hi'
 check = 'ok'
+
+
+for instructions in check:
+    if instructions == "hi":
+        continue  # This skips the current iteration and moves to the next one
+    print (input('Hi welcome to tic tac toe (write "hi" to continue):'))
+    break
 
 for instructions in check:
     if instructions == "ok":
         continue  # This skips the current iteration and moves to the next one
-    print (input('Hi welcome to tic tac toe, in order to win the game complete 3 spaces in diagonal or a straight line (write "ok" to continue):'))
+    print (input('In order to win the game complete 3 spaces in diagonal or a straight line by inputing a position with the corresponding number (write "ok" to continue):'))
+    break
 
 
-def gameboard (squares_board):
-    print(squares_board[1] + '|' + squares_board[2] + '|' + squares_board[3])
+
+
+
+board = {1: ' ', 2: ' ', 3: ' ',
+         4: ' ', 5: ' ', 6: ' ',
+         7: ' ', 8: ' ', 9: ' '}
+player = 'O'
+bot = 'X'
+
+def printBoard(board):
+    print(board[1] + '|' + board[2] + '|' + board[3])
     print('-+-+-')
-    print(squares_board[4] + '|' + squares_board[5] + '|' + squares_board[6])
+    print(board[4] + '|' + board[5] + '|' + board[6])
     print('-+-+-')
-    print(squares_board[7] + '|' + squares_board[8] + '|' + squares_board[9])
+    print(board[7] + '|' + board[8] + '|' + board[9])
     print("\n")
 
 
-
-# input the square to be selected°° 
-X = 'xplr'
-O = 'oplr'
-
-def Xplyer():
-    X = int (input ("X move:"))
-
-def Oplyer():
-    O = int (input ("O move:"))
-
-   
-        
-    
-# check for win 
-def win():
-    if X or O == 1 == 2 == 3: 
-        if X or O == 1 == 4 == 7:
-             if X or O == 1 == 5 == 9: 
-                if X or O ==2 == 5 == 8: 
-                    if X or O == 3 == 6 == 9: 
-                        if X or O == 3 == 5 == 7:
-                            if X or O ==7 == 8 == 9 :
-                                return True
-        
-if X == win():
-    print ('You Won X!!')
-else:
-    print ('You Won O!!')
- 
+def spaceIsFree(position):
+    if board[position] == ' ':
+        return True
+    else:
+        return False
 
 
-
-# if a square is occupied let the user know
-if X == O:
-    print ("already something here")
-
+dancex = ["┏( ͡❛ ͜ʖ ͡❛)┛ X wins! ┏( ͡❛ ͜ʖ ͡❛)┛", "┛( ͡❛ ͜ʖ ͡❛)┏ X wins! ┛( ͡❛ ͜ʖ ͡❛)┏", ]
+danceo = ["┏( ͡❛ ͜ʖ ͡❛)┛ O wins! ┏( ͡❛ ͜ʖ ͡❛)┛", "┛( ͡❛ ͜ʖ ͡❛)┏ O wins! ┛( ͡❛ ͜ʖ ͡❛)┏", ]
+repeat_times = 5
 
 
+def insertLetter(letter, position):
+    if spaceIsFree(position):
+        board[position] = letter
+        printBoard(board)
+        if (checkDraw()):
+            print("¯\_( ͡❛ ● ͡❛)_/¯  Draw! ¯\_( ͡❛ ● ͡❛)_/¯")
+            exit()
+        if checkForWin():
+            if letter == 'X':
+                for d in dancex:
+                    for _ in range(repeat_times):
+                        print (d)
+
+                exit()
+            else:
+                for d in danceo:
+                    for _ in range(repeat_times):
+                        print (d)
+                exit()
+
+        return
+
+
+    else:
+        print("already something here ┏( ͡❛ ︵ ͡❛)┛")
+        position = int(input("Choose somewhere else ┏( ͡❛ ● ͡❛)┛ "))
+        insertLetter(letter, position)
+        return
+
+
+def checkForWin():
+    if (board[1] == board[2] and board[1] == board[3] and board[1] != ' '):
+        return True
+    elif (board[4] == board[5] and board[4] == board[6] and board[4] != ' '):
+        return True
+    elif (board[7] == board[8] and board[7] == board[9] and board[7] != ' '):
+        return True
+    elif (board[1] == board[4] and board[1] == board[7] and board[1] != ' '):
+        return True
+    elif (board[2] == board[5] and board[2] == board[8] and board[2] != ' '):
+        return True
+    elif (board[3] == board[6] and board[3] == board[9] and board[3] != ' '):
+        return True
+    elif (board[1] == board[5] and board[1] == board[9] and board[1] != ' '):
+        return True
+    elif (board[7] == board[5] and board[7] == board[3] and board[7] != ' '):
+        return True
+    else:
+        return False
+
+
+def checkDraw():
+    for key in board.keys():
+        if (board[key] == ' '):
+            return False
+    return True
+
+
+def playerMove():
+    position = int(input("Choose the position for 'O':  "))
+    insertLetter(player, position)
+    return
+
+
+def compMove():
+    position = int(input("Choose the position for 'X':  "))
+    insertLetter(bot, position)
+    return
+
+printBoard(board)
 
 
 
-# reference links
-# https://www.youtube.com/watch?v=dK6gJw4-NCo
+
+while not checkForWin():
+    compMove()
+    playerMove()
+
+
