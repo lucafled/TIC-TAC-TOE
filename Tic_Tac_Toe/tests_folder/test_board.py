@@ -2,35 +2,12 @@ squares_board = {1: ' ', 2: ' ', 3: ' ',
                 4: ' ', 5: ' ', 6: ' ',
                 7: ' ', 8: ' ', 9: ' '}
 
-X = [1 , 8, 9]
-O = [1, 2, 3]
+def gameboard (squares_board):
+    print(squares_board[1] + '|' + squares_board[2] + '|' + squares_board[3])
+    print('-+-+-')
+    print(squares_board[4] + '|' + squares_board[5] + '|' + squares_board[6])
+    print('-+-+-')
+    print(squares_board[7] + '|' + squares_board[8] + '|' + squares_board[9])
+    print("\n")
 
-
-def win():
-    if O == 1 == 2 == 3:
-        if O == 1 == 4 == 7:
-            if O == 1 == 5 == 9: 
-                if O ==2 == 5 == 8: 
-                    if O == 3 == 6 == 9: 
-                        if O == 3 == 5 == 7:
-                            if O ==7 == 8 == 9 :
-                                 if X  == 1 == 2 == 3:
-                                    if X  == 1 == 4 == 7:
-                                        if X == 1 == 5 == 9: 
-                                            if X ==2 == 5 == 8: 
-                                                if X == 3 == 6 == 9: 
-                                                    if X == 3 == 5 == 7:
-                                                        if X ==7 == 8 == 9 :
-                                                            return True 
-                                                        
-
-if X == win():
-    print ("x")
-    if O == win():
-        print ("o")                                                        
-                                                           
-                                
-        
-
-
- 
+print (gameboard(squares_board))
