@@ -1,3 +1,4 @@
+ 
 checkhi = 'hi'
 check = 'ok'
 
@@ -13,9 +14,6 @@ for instructions in check:
         continue  # This skips the current iteration and moves to the next one
     print (input('In order to win the game complete 3 spaces in diagonal or a straight line by inputing a position with the corresponding number (write "ok" to continue):'))
     break
-
-
-
 
 
 board = {1: ' ', 2: ' ', 3: ' ',
@@ -39,25 +37,23 @@ def spaceIsFree(position):
     else:
         return False
 
-
 dancex = ["┏( ͡❛ ͜ʖ ͡❛)┛ X wins! ┏( ͡❛ ͜ʖ ͡❛)┛", "┛( ͡❛ ͜ʖ ͡❛)┏ X wins! ┛( ͡❛ ͜ʖ ͡❛)┏", ]
 danceo = ["┏( ͡❛ ͜ʖ ͡❛)┛ O wins! ┏( ͡❛ ͜ʖ ͡❛)┛", "┛( ͡❛ ͜ʖ ͡❛)┏ O wins! ┛( ͡❛ ͜ʖ ͡❛)┏", ]
-repeat_times = 5
+repeat_times = 3
 
 
-def insertposition(letter, position):
+def insertLetter(letter, position):
     if spaceIsFree(position):
         board[position] = letter
         printBoard(board)
         if (checkDraw()):
             print("¯\_( ͡❛ ● ͡❛)_/¯  Draw! ¯\_( ͡❛ ● ͡❛)_/¯")
             exit()
-        if checkWin():
+        if checkForWin():
             if letter == 'X':
                 for d in dancex:
                     for _ in range(repeat_times):
                         print (d)
-
                 exit()
             else:
                 for d in danceo:
@@ -71,11 +67,11 @@ def insertposition(letter, position):
     else:
         print("already something here ┏( ͡❛ ︵ ͡❛)┛")
         position = int(input("Choose somewhere else ┏( ͡❛ ● ͡❛)┛ "))
-        insertposition(letter, position)
+        insertLetter(letter, position)
         return
 
 
-def checkWin():
+def checkForWin():
     if (board[1] == board[2] and board[1] == board[3] and board[1] != ' '):
         return True
     elif (board[4] == board[5] and board[4] == board[6] and board[4] != ' '):
@@ -105,14 +101,13 @@ def checkDraw():
 
 def playerMove():
     position = int(input("Choose the position for 'O':  "))
-    insertposition(player, position)
+    insertLetter(player, position)
     return
 
 
 def compMove():
-    position = int(input("Choose the position for 'X':  "))
-    insertposition
-    (bot, position)
+    position = int(input("Choose the position for 'X': "))
+    insertLetter(bot, position)
     return
 
 printBoard(board)
@@ -120,9 +115,6 @@ printBoard(board)
 
 
 
-while not checkWin():
+while not checkForWin():
     compMove()
     playerMove()
-
-
-
