@@ -1,2 +1,2 @@
-from . board import *
-from . actions import *
+from .board import *
+from .actions import *
