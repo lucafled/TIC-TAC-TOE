@@ -1,6 +1,11 @@
 from board import squares_board, gameboard
+
+
 plrO = 'O'
 plrX = 'X'
+
+
+
 
 # if position is empty let the other code know
 def spaceIsFree(position):
@@ -11,10 +16,21 @@ def spaceIsFree(position):
   
 
 
+
+
+
+
+
+
 #if someone wins do this
-dancex = ["┏( ͡❛ ͜ʖ ͡❛)┛ X wins! ┏( ͡❛ ͜ʖ ͡❛)┛", "┛( ͡❛ ͜ʖ ͡❛)┏ X wins! ┛( ͡❛ ͜ʖ ͡❛)┏", ]
-danceo = ["┏( ͡❛ ͜ʖ ͡❛)┛ O wins! ┏( ͡❛ ͜ʖ ͡❛)┛", "┛( ͡❛ ͜ʖ ͡❛)┏ O wins! ┛( ͡❛ ͜ʖ ͡❛)┏", ]
+dancex = ["٩(˘◡˘)۶ X wins! ٩(˘◡˘)۶"]
+danceo = ["٩(˘◡˘)۶ O wins! ٩(˘◡˘)۶"]
 repeat_times = 3
+
+
+
+
+
 
 
 
@@ -32,12 +48,12 @@ def insertLetter(letter, position):
                for d in dancex:
                    for _ in range(repeat_times):
                        print (dancex)
-               exit()
+                       break
            else:
                for d in danceo:
                    for _ in range(repeat_times):
                        print (danceo)
-               exit()
+                   break
 
 
        return
@@ -75,10 +91,20 @@ def checkForWin():
 
 #checks draws
 def checkForDraw():
+   # If position 1 is empty, the game can't be a draw
+   if squares_board[1] == ' ':
+       return False
+
+
+   # Check if all positions are filled
    for key in squares_board.keys():
-       if (squares_board[key] == ' '):
+       if squares_board[key] == ' ':
            return False
-       return True   
+   return True
+
+
+
+
 
 
 
@@ -87,10 +113,32 @@ def checkForDraw():
 def compMove():
    position = int(input("Choose the position for 'X': "))
    insertLetter(plrX, position)
-   return
+   return         
 
 
 #request movement from 0
+def playerMove():
+   position = int(input("Choose the position for 'O':  "))
+   insertLetter(plrO, position)
+   return
+
+
+
+
+def checkForDraw():
+   # If position 1 is empty, the game can't be a draw
+   if squares_board[1] == ' ':
+       return False
+
+
+   # Check if all positions are filled
+   for key in squares_board.keys():
+       if squares_board[key] == ' ':
+           return False
+   return True
+
+
+
 def playerMove():
    position = int(input("Choose the position for 'O':  "))
    insertLetter(plrO, position)
