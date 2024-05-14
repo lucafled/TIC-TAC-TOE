@@ -10,7 +10,7 @@
 checkhi = 'hi'
 check = 'ok'
 
-# instructions
+# Instructions
 for instructions in check:
     if instructions == "hi":
         continue
@@ -29,6 +29,7 @@ for instructions in check:
     print(input('For example, if you want to select the position at the right top coorner, input a 3 (write "ok" to continue):'))
     break
 
+# Board
 
 plrO = 'O'
 plrX = 'X'
