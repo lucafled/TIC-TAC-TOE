@@ -5,141 +5,67 @@ plrO = 'O'
 plrX = 'X'
 
 
-
-
-# if position is empty let the other code know
 def spaceIsFree(position):
-   if squares_board[position] == ' ':
-       return True
-   else:
-       return False
-  
+    return squares_board[position] == ' '
 
 
-
-
-
-
-
-
-#if someone wins do this
-dancex = ["٩(˘◡˘)۶ X wins! ٩(˘◡˘)۶"]
-danceo = ["٩(˘◡˘)۶ O wins! ٩(˘◡˘)۶"]
-repeat_times = 3
-
-
-
-
-
-
-
-
-
-
+# Insert letter in position
 def insertLetter(letter, position):
-   if spaceIsFree(position):
-       squares_board[position] = letter
-       gameboard(squares_board)
-       if (checkForDraw()):
-           print("¯\\_( ͡❛ ● ͡❛)_/¯  Draw! ¯\\_( ͡❛ ● ͡❛)_/¯")
-           exit()
-       if checkForWin():
-           if letter == 'X':
-               for d in dancex:
-                   for _ in range(repeat_times):
-                       print (dancex)
-                       break
-           else:
-               for d in danceo:
-                   for _ in range(repeat_times):
-                       print (danceo)
-                   break
+    if spaceIsFree(position):
+        squares_board[position] = letter
+        gameboard(squares_board)
+        if checkForWin():
+            print(f'٩(˘◡˘)۶{letter} wins!٩(˘◡˘)۶')
+            reset()
+        elif checkForDraw():
+            print("¯\\_( ͡❛ ● ͡❛)_/¯  Draw! ¯\\_( ͡❛ ● ͡❛)_/¯")
+            reset()
+        return
+    else:
+        print("already something here ┏( ͡❛ ︵ ͡❛)┛")
+        position = int(input("Choose somewhere else ┏( ͡❛ ● ͡❛)┛ "))
+        insertLetter(letter, position)
 
 
-       return
-   else:
-       print("already something here ┏( ͡❛ ︵ ͡❛)┛")
-       position = int(input("Choose somewhere else ┏( ͡❛ ● ͡❛)┛ "))
-       insertLetter(letter, position)
-       return
-
-
-
-
-#checks wins
+# Check for a win
 def checkForWin():
-   if (squares_board[1] == squares_board[2] and squares_board[1] == squares_board[3] and squares_board[1] != ' '):
-       return True
-   elif (squares_board[4] == squares_board[5] and squares_board[4] == squares_board[6] and squares_board[4] != ' '):
-       return True
-   elif (squares_board[7] == squares_board[8] and squares_board[7] == squares_board[9] and squares_board[7] != ' '):
-       return True
-   elif (squares_board[1] == squares_board[4] and squares_board[1] == squares_board[7] and squares_board[1] != ' '):
-       return True
-   elif (squares_board[2] == squares_board[5] and squares_board[2] == squares_board[8] and squares_board[2] != ' '):
-       return True
-   elif (squares_board[3] == squares_board[6] and squares_board[3] == squares_board[9] and squares_board[3] != ' '):
-       return True
-   elif (squares_board[1] == squares_board[5] and squares_board[1] == squares_board[9] and squares_board[1] != ' '):
-       return True
-   elif (squares_board[7] == squares_board[5] and squares_board[7] == squares_board[3] and squares_board[7] != ' '):
-       return True
-   else:
-       return False
-  
+    win_conditions = [
+        [1, 2, 3], [4, 5, 6], [7, 8, 9],  # Rows
+        [1, 4, 7], [2, 5, 8], [3, 6, 9],  # Columns
+        [1, 5, 9], [3, 5, 7]              # Diagonals
+    ]
+    for condition in win_conditions:
+        if all(squares_board[pos] == 'X' for pos in condition) or all(squares_board[pos] == 'O' for pos in condition):
+            return True
+    return False
 
 
-#checks draws
+# Check for a draw
 def checkForDraw():
-   # If position 1 is empty, the game can't be a draw
-   if squares_board[1] == ' ':
-       return False
+    return all(square != ' ' for square in squares_board.values())
 
 
-   # Check if all positions are filled
-   for key in squares_board.keys():
-       if squares_board[key] == ' ':
-           return False
-   return True
-
-
-
-
-
-
-
-
-#requests movement from x
+# X movement 
 def compMove():
-   position = int(input("Choose the position for 'X': "))
-   insertLetter(plrX, position)
-   return         
+    position = int(input("Choose the position for 'X': "))
+    insertLetter(plrX, position)
+    return
 
 
-#request movement from 0
+# O movement 
 def playerMove():
-   position = int(input("Choose the position for 'O':  "))
-   insertLetter(plrO, position)
-   return
+    position = int(input("Choose the position for 'O':  "))
+    insertLetter(plrO, position)
+    return
 
 
-
-
-def checkForDraw():
-   # If position 1 is empty, the game can't be a draw
-   if squares_board[1] == ' ':
-       return False
-
-
-   # Check if all positions are filled
-   for key in squares_board.keys():
-       if squares_board[key] == ' ':
-           return False
-   return True
-
-
-
-def playerMove():
-   position = int(input("Choose the position for 'O':  "))
-   insertLetter(plrO, position)
-   return
+# Reset 
+def reset():
+    global squares_board
+    play_again = input("Play again? (yes/no): ")
+    if play_again == 'yes':
+        squares_board = {1: ' ', 2: ' ', 3: ' ',
+                         4: ' ', 5: ' ', 6: ' ',
+                         7: ' ', 8: ' ', 9: ' '}
+    else:
+        exit()
