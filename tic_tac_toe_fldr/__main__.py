@@ -7,39 +7,42 @@
 # author: Shaun Halverson
 
 
-
-
-
-
 checkhi = 'hi'
 check = 'ok'
 
-
+# instructions
+for instructions in check:
+    if instructions == "hi":
+        continue
+    print(input('Hi, welcome to tic tac toe (write "hi" to continue):'))
+    break
 
 for instructions in check:
-   if instructions == "hi":
-       continue  # This skips the current iteration and moves to the next one
-   print (input('Hi welcome to tic tac toe (write "hi" to continue):'))
-   break
-
+    if instructions == "ok":
+        continue
+    print(input('In order to win the game, complete 3 spaces in diagonal or a straight line by inputting a position with the corresponding number (write "ok" to continue):'))
+    break
 
 for instructions in check:
-   if instructions == "ok":
-       continue  # This skips the current iteration and moves to the next one
-   print (input('In order to win the game complete 3 spaces in diagonal or a straight line by inputing a position with the corresponding number (write "ok" to continue):'))
-   break
+    if instructions == "ok":
+        continue
+    print(input('For example, if you want to select the position at the right top coorner, input a 3 (write "ok" to continue):'))
+    break
 
 
-from board import squares_board, gameboard
+plrO = 'O'
+plrX = 'X'
+
+from actions import checkForWin, compMove, playerMove
 from actions import insertLetter, playerMove, compMove
-from actions import checkForWin, playerMove, compMove, checkForDraw    #all the checks
+from actions import checkForWin, playerMove, compMove, reset, checkForDraw
 
 
 
-
-while not checkForWin():
-   compMove()
-   playerMove()
-else:
-   if checkForWin == True:
-    instructions
+# Game loop
+while True:
+    while not checkForWin():
+        compMove()
+        if checkForWin():
+            break
+        playerMove()
