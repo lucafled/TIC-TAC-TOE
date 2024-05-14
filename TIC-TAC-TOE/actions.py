@@ -46,7 +46,7 @@ def checkForDraw():
     return all(square != ' ' for square in squares_board.values())
 
 
-# Request movement from 'X' (computer)
+# Request movement from 'X' (player)
 def compMove():
     position = int(input("Choose the position for 'X': "))
     insertLetter(plrX, position)
