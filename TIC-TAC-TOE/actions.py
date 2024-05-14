@@ -26,7 +26,7 @@ def insertLetter(letter, position):
         print("already something here ┏( ͡❛ ︵ ͡❛)┛")
         position = int(input("Choose somewhere else ┏( ͡❛ ● ͡❛)┛ "))
         insertLetter(letter, position)
-
+# we made a function to check for a win or draw. If there's a win, it prints a victory message and resets the game
 
 # Check for a win
 def checkForWin():
@@ -39,6 +39,7 @@ def checkForWin():
         if all(squares_board[pos] == 'X' for pos in condition) or all(squares_board[pos] == 'O' for pos in condition):
             return True
     return False
+    #checks for the winner if a condition is completed, If all positions in that condition have the same symbol the player wins 
 
 
 # Check for a draw
@@ -58,12 +59,13 @@ def playerMove():
     position = int(input("Choose the position for 'O':  "))
     insertLetter(plrO, position)
     return
+#In here we check let the players chose a position 
 
 
 # Reset the game
 def reset():
     global squares_board
-    play_again = input("Play again? (yes/no): ")
+    play_again = input("Play again? (yes/no): ") # in this part we just ask the player if he wants to continue playing 
     if play_again == 'yes':
         squares_board = {1: ' ', 2: ' ', 3: ' ',
                          4: ' ', 5: ' ', 6: ' ',
