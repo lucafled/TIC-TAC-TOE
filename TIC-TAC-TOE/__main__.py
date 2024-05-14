@@ -8,6 +8,7 @@ for instructions in check:
     print(input('Hi, welcome to tic tac toe (write "hi" to continue):'))
     break
 
+
 for instructions in check:
     if instructions == "ok":
         continue
@@ -28,6 +29,8 @@ plrX = 'X'
 from actions import checkForWin, compMove, playerMove
 from actions import insertLetter, playerMove, compMove
 from actions import checkForWin, playerMove, compMove, reset, checkForDraw
+
+# we import all the action previously defined 
 
 
 
