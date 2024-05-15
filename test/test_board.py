@@ -1,4 +1,8 @@
+#https://www.youtube.com/watch?v=M3G1ZgOMFxo
+#Shaun Halverson
 
+#https://www.youtube.com/watch?v=dK6gJw4-NCo
+#Code Coach
 
 
 squares_board = {1: ' ', 2: ' ', 3: ' ',
